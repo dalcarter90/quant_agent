@@ -7,8 +7,19 @@ name = "quant-agent"
 version = "0.1.0"
 description = "Point-in-time quantitative research and execution platform"
 requires-python = ">=3.11"
-dependencies = []
+# Pinned exactly: the adapter maps alpaca-py's models field by field, so a
+# minor SDK bump is a breaking change until the mapping is re-verified.
+dependencies = ["alpaca-py==0.44.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=9.1"]
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["core*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Put the repo root on sys.path so `from core.brokers...` resolves without
+# requiring an editable install.
+pythonpath = ["."]
