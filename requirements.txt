@@ -1,0 +1,6 @@
+# Runtime. pyproject.toml is the source of truth; this file mirrors it for
+# `pip install -r`.
+alpaca-py==0.44.0
+
+# Development (or: pip install -e ".[dev]")
+pytest>=9.1
